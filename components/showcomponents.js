@@ -13,6 +13,8 @@ export default function ShowComponent({ a, deletenotes, navigation }) {
 
     navigatetoOther = (e) => {
         navigation.navigate('Details', { a: e })
+        // routerNav('false')
+       
     }
 
     return (
@@ -26,7 +28,7 @@ export default function ShowComponent({ a, deletenotes, navigation }) {
                     renderItem={({ item }) => (
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
                             <View style={style.eachtext}>
-                                <Text style={style.texttype1} key={item.key} onPress={() => { navigatetoOther(item.notes) }} >  {item.notes}</Text>
+                                <Text numberOfLines={1} style={style.texttype1} key={item.key} onPress={() => { navigatetoOther(item.notes) }} >  {item.notes}</Text>
                                 <AntDesign style={style.icon1} onPress={() => { deletenotes(item.key) }} name="delete" size={24} color="black" />
                             </View>
                             {/* <TouchableOpacity onPress={() => { deletenotes(item.key) }} style={style.deleteButt}><Text style={{ fontSize: 14, color: 'black', }}>Del</Text></TouchableOpacity> */}
@@ -45,7 +47,7 @@ const style = StyleSheet.create({
     alldata: {
         width: '100%',
         backgroundColor: 'white',
-        marginTop: 20,
+        paddingTop: 20,
         // maxHeight: 550,
         display: 'flex',
         flexDirection: 'column',
@@ -69,14 +71,15 @@ const style = StyleSheet.create({
         marginLeft: '2.5%',
         marginTop: 5,
         marginBottom: 5,
-        borderWidth: 1.5,
-        borderStyle: 'dotted',
+        borderWidth: 1,
+        // borderTopWidth:0,
+        // borderStyle: 'dotted',
         borderRadius: 5,
     }, texttype1: {
         fontSize: 16,
         padding: 10,
         width: '88%',
-        fontFamily: globalstyle.font.fontFamily
+        // fontFamily: globalstyle.font.fontFamily
         // textAlign: 'right',
         // flexWrap:'wrap',
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+
 export default function Anote({ navigation }) {
     console.log(navigation.getState().routes[1].params.a);
     return (
