@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native';
 import Headcomp from './header';
-import Makenotes from './makenotes';
+import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
 
 
@@ -52,7 +52,7 @@ export default function Home(props) {
             <ImageBackground blurRadius={9} style={styles.container} source={require('../assets/Images/e.jpg')} >
 
                 {/* <Headcomp /> */}
-                <Makenotes updatenotes={updatenotes} />
+                <Makenotebut updatenotes={updatenotes} />
 
                 <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} />
                 {/* <StatusBar style='auto' /> */}

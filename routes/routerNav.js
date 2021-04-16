@@ -3,58 +3,51 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Navs from './stacknavigation'
 import { globalstyle } from '../assets/styles/gloabalstyles';
+import { useColorScheme } from 'react-native';
 
 var Drawer = createDrawerNavigator()
 
 var MyTheme = {
     sun: {
         "colors": {
-            // "background": "rgb(1, 1, 1)",
-            // "border": "rgb(255, 255, 255)",
+            "background": 'white',
+            "border": "black",
             "card": 'white',
-            // "notification": "rgb(255, 69, 58)",
             "primary": 'black',
-            // "text": globalstyle.color.backgroundColor,
-        },
-        "dark": false,
+            "text": 'black',
+            'headercolor': '#b3ffff',
+            'lightback': '#F5F5F5'
+        }
     },
     moon: {
         "colors": {
-            // "background": "rgb(1, 1, 1)",
-            // "border": "rgb(255, 255, 255)",
+            "background": "black",
             "card": 'black',
-            // "notification": "rgb(255, 69, 58)",
             "primary": globalstyle.color2.backgroundColor,
-            // "text": "rgb(2, 2, 2)",
-        },
-        "dark": true,
+            "text": "white",
+            'border': 'gray',
+            'headercolor': '#00472d',
+            'lightback': '#383838'
+        }
     }
 };
 
-
-var outside;
-var out1;
-export var chngthm = () => {
-    // console.log(MyTheme);
-    if (out1.dark == false) {
-        outside(MyTheme.moon)
-    } else {
-        outside(MyTheme.sun)
-    }
+var glbl;
+export var chngglobthem = (e)=>{
+    glbl(e)
 }
 
 
 export default function Dooon() {
+    var [scheme, setscheme] = React.useState('light')
+    console.log(scheme);
+    glbl = setscheme;
 
-    var [themeselct, Slctthm] = React.useState(MyTheme.sun)
-
-    out1 = themeselct
-    outside = Slctthm
 
     return (
-        <NavigationContainer theme={themeselct} >
-            <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' }, headerShown: false }} initialRouteName="Notes Maker">
-                <Drawer.Screen name="Notes Maker" component={Navs} />
+        <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
+            <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' }, headerShown: false }} initialRouteName="Home">
+                <Drawer.Screen name="Home" component={Navs} />
             </Drawer.Navigator>
         </NavigationContainer>
     )

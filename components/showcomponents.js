@@ -2,23 +2,29 @@ import React from 'react'
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { globalstyle } from '../assets/styles/gloabalstyles';
+import { useTheme } from '@react-navigation/native'
+
 
 export default function ShowComponent({ a, deletenotes, navigation }) {
-    console.log('this is ', a);
+    // console.log('this is ', a);
     var [iter, set_iter] = React.useState(0)
     // var list1 = [];
     // for (var as = 0; as < a.length; as++) {
     //     list1.push(<View style={style.eachtext}><Text style={style.texttype1, style.texttype2} key={a[as].key} >{a[as].notes}</Text></View>)
     // }
 
+    var theme = useTheme()
+
     navigatetoOther = (e) => {
         navigation.navigate('Details', { a: e })
         // routerNav('false')
-       
     }
 
+    console.log('theme is : ', theme);
+
+
     return (
-        <View style={style.alldata}>
+        <View style={{ ...style.alldata, backgroundColor: theme.colors.background }}>
             {/*<View style={style.pp}>{list1}</View>*/}
             <View style={{}}>
                 <FlatList
@@ -27,9 +33,9 @@ export default function ShowComponent({ a, deletenotes, navigation }) {
                     data={a}
                     renderItem={({ item }) => (
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
-                            <View style={style.eachtext}>
-                                <Text numberOfLines={1} style={style.texttype1} key={item.key} onPress={() => { navigatetoOther(item.notes) }} >  {item.notes}</Text>
-                                <AntDesign style={style.icon1} onPress={() => { deletenotes(item.key) }} name="delete" size={24} color="black" />
+                            <View style={{ ...style.eachtext, borderColor: theme.colors.border }}>
+                                <Text numberOfLines={1} style={{ ...style.texttype1, color: theme.colors.text }} key={item.key} onPress={() => { navigatetoOther(item.notes) }} >  {item.notes}</Text>
+                                <AntDesign style={{ ...style.icon1, color: theme.colors.text }} onPress={() => { deletenotes(item.key) }} name="delete" size={24} color="black" />
                             </View>
                             {/* <TouchableOpacity onPress={() => { deletenotes(item.key) }} style={style.deleteButt}><Text style={{ fontSize: 14, color: 'black', }}>Del</Text></TouchableOpacity> */}
 
@@ -46,7 +52,7 @@ export default function ShowComponent({ a, deletenotes, navigation }) {
 const style = StyleSheet.create({
     alldata: {
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         paddingTop: 20,
         // maxHeight: 550,
         display: 'flex',
@@ -72,6 +78,7 @@ const style = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         borderWidth: 1,
+        borderColor: 'white',
         // borderTopWidth:0,
         // borderStyle: 'dotted',
         borderRadius: 5,
@@ -79,6 +86,7 @@ const style = StyleSheet.create({
         fontSize: 16,
         padding: 10,
         width: '88%',
+        color: 'white',
         // fontFamily: globalstyle.font.fontFamily
         // textAlign: 'right',
         // flexWrap:'wrap',

@@ -1,37 +1,44 @@
 import React from 'react';
 import { View, Text, StyleSheet, Modal, Image } from 'react-native';
+import { useTheme } from '@react-navigation/native'
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { chngthm } from '../routes/routerNav'
+
+import { chngglobthem } from '../routes/routerNav'
 
 export default function Headcomp({ navigation }) {
-    // console.log(navigation);
     var [modalOne, setModal] = React.useState(false)
     var [imgtheme, setimgtheme] = React.useState({ img: require('../assets/Images/sun.png'), key: 'sun' })
     var PageSlider = () => {
         navigation.openDrawer()
     }
+    var darkorlight = useTheme()
+
+
     var switchIt = () => {
         //switch the theme
         if (imgtheme.key == 'moon') {
             setimgtheme({ img: require('../assets/Images/sun.png'), key: 'sun' })
-
+            chngglobthem('light')
         } else {
             setimgtheme({ img: require('../assets/Images/moon.jpg'), key: 'moon' })
-
+            chngglobthem('dark')
         }
-        console.log(imgtheme);
+        // console.log(imgtheme);
         setModal(true)
         setTimeout(() => setModal(false), 1000)
-        chngthm()
+        // chngthm()
+        // colorScheme = 'dark'
+
+        console.log(darkorlight);
     }
 
     return (
-        <View style={style.headcomp} >
-            <Feather onPress={PageSlider} style={style.Menuicon} name="menu" size={24} color="black" />
-            <Text style={style.textcomp}>Notesss Maker</Text>
-            <MaterialCommunityIcons style={style.themeDn} onPress={switchIt} name="theme-light-dark" size={24} color="black" />
+        <View style={{ ...style.headcomp, backgroundColor: darkorlight.colors.headercolor }} >
+            <Feather onPress={PageSlider} style={{ ...style.Menuicon, color: darkorlight.colors.text }} name="menu" size={24} color="black" />
+            <Text style={{ ...style.textcomp, color: darkorlight.colors.text }}>Notes Maker</Text>
+            <MaterialCommunityIcons style={{ ...style.themeDn, color: darkorlight.colors.text }} onPress={switchIt} name="theme-light-dark" size={24} color="black" />
             <Modal visible={modalOne} animationType={'fade'} transparent={true}  >
 
                 <View style={style.modal}>

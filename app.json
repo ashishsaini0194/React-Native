@@ -1,10 +1,11 @@
 {
-  "name": "proj3",
-  "displayName": "proj3",
+  "name": "My Notes",
+  "displayName": "My Notes",
   "expo": {
     "name": "proj3",
     "slug": "proj3",
     "version": "1.0.0",
+    "userInterfaceStyle": "automatic",
     "assetBundlePatterns": [
       "**/*"
     ]
