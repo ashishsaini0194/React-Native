@@ -4,8 +4,6 @@ import Navs from './routes/routerNav';
 
 export default function App() {
   return (
-
-      <Navs />
- 
+    <Navs />
   )
 }

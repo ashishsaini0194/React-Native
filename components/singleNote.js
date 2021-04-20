@@ -1,16 +1,23 @@
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { useTheme, usetheme } from '@react-navigation/native'
+import Clipboard from 'expo-clipboard';
 
 export default function Anote({ navigation }) {
-    console.log(navigation.getState().routes[1].params.a);
+    var data = navigation.getState().routes[1].params.a
+    console.log(data);
     var theme = useTheme()
+    // var copytoclip = () => {
+    //     Clipboard.setString(data); console.log('copied');
+    // }
     return (
+
         <View>
             <ScrollView>
-                <Text style={{ ...styles.text1, color: theme.colors.text }} > {navigation.getState().routes[1].params.a}</Text>
+                <TextInput editable={true} multiline={true} style={{ ...styles.text1, color: theme.colors.text }} > {data}</TextInput>
             </ScrollView>
         </View>
+
     )
 }
 
@@ -18,6 +25,7 @@ var styles = StyleSheet.create({
     text1: {
         fontSize: 16,
         padding: 20,
-        height: 'auto',
+        height: '100%',
+        flex: 1,
     }
 })

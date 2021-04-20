@@ -7,7 +7,7 @@ import { useTheme } from '@react-navigation/native'
 
 export default function ShowComponent({ a, deletenotes, navigation }) {
     // console.log('this is ', a);
-    var [iter, set_iter] = React.useState(0)
+    // var [iter, set_iter] = React.useState(0)
     // var list1 = [];
     // for (var as = 0; as < a.length; as++) {
     //     list1.push(<View style={style.eachtext}><Text style={style.texttype1, style.texttype2} key={a[as].key} >{a[as].notes}</Text></View>)
@@ -20,7 +20,7 @@ export default function ShowComponent({ a, deletenotes, navigation }) {
         // routerNav('false')
     }
 
-    console.log('theme is : ', theme);
+    // console.log('theme is : ', theme);
 
 
     return (

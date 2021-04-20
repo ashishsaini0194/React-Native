@@ -40,7 +40,7 @@ export var chngglobthem = (e)=>{
 
 export default function Dooon() {
     var [scheme, setscheme] = React.useState('light')
-    console.log(scheme);
+    // console.log(scheme);
     glbl = setscheme;
 
 
