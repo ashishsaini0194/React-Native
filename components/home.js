@@ -39,9 +39,11 @@ export default function Home(props) {
     }
 
     var setData = async (e) => {
+        clear()
         await asyncstore.setItem('data', JSON.stringify(e))
         return;
     }
+
 
     var updatenotes = (textdata) => {
         // alert(textdata)
@@ -52,7 +54,6 @@ export default function Home(props) {
             var data = getData('end')
             data.then((e) => {
                 if (e == null) {
-                    clear()
                     setData([{ notes: textdata, key: uniqueKey }])
                     set_notes([{ notes: textdata, key: uniqueKey }])
                 } else {
@@ -60,7 +61,6 @@ export default function Home(props) {
                     e[e.length] = { notes: textdata, key: uniqueKey };
                     // console.log('AF data is :', e);
                     // e.push({ notes: textdata, key: uniqueKey })
-                    clear()
                     setData(e)
                     set_notes(e)
                 }
@@ -104,6 +104,22 @@ export default function Home(props) {
 
     }
 
+    var analyzeData = () => {
+        var data = getData('end');
+        data.then((data1) => {
+            var realdata = data1.filter((e) => {
+
+                if (e.notes == " " || e.notes == "  " || e.notes == "   ") {
+                    return false
+                } else {
+                    return true
+                }
+            })
+            console.log('real data is : ', realdata);
+            set_notes(realdata)
+            setData(realdata)
+        })
+    }
     var deletenotes = (key) => {
         console.log('key we recieved: ', key);
         set_notes((prevnotes) => {
@@ -128,8 +144,8 @@ export default function Home(props) {
                 {/* <Headcomp /> */}
                 <Makenotebut updatenotes={updatenotes} />
 
-                <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} />
-                {/* <StatusBar style='auto' /> */}
+                <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} />
+                <StatusBar style='auto' />
 
             </ImageBackground>
         </TouchableWithoutFeedback >

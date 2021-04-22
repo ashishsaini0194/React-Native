@@ -3,6 +3,7 @@ import { View, TextInput, StyleSheet, TouchableOpacity, TouchableWithoutFeedback
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useTheme } from '@react-navigation/native'
 import { Entypo } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 export default function Makenotes({ updatenotes, functoclose }) {
 
@@ -13,15 +14,16 @@ export default function Makenotes({ updatenotes, functoclose }) {
     }
     var theme = useTheme().colors;
     return (
-        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
+        <TouchableWithoutFeedback  onPress={() => { Keyboard.dismiss() }}>
             <View style={{ ...styles.makenotes, backgroundColor: theme.background, borderColor: theme.border }}>
                 <View style={{ ...styles.aboveView, borderColor: theme.border, backgroundColor: theme.headercolor }}>
                     <Entypo name="cross" onPress={functoclose} size={30} color={theme.text} />
-                    <TouchableOpacity onPress={() => { updatenotes(text), text1.clear(), functoclose() }} style={{ ...styles.Topa, backgroundColor: theme.background }} ><Text style={{ fontFamily: globalstyle.font.fontFamily, textAlign: 'center', fontSize: 16, marginTop: 3, color: theme.text }}>Add</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => { updatenotes(text), text1.clear(), functoclose() }} style={{ ...styles.Topa, backgroundColor: theme.background }} ><Text style={{ fontFamily: globalstyle.font.fontFamily, textAlign: 'center', fontSize: 17, marginTop: 5, color: theme.text }}>Add</Text></TouchableOpacity>
                 </View>
-                <ScrollView>
-                    <TextInput ref={input => { text1 = input }}  placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
+                <ScrollView style={{ padding: 20 }}>
+                    <TextInput autoFocus={true} ref={input => { text1 = input }} placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
                 </ScrollView>
+                <StatusBar backgroundColor='black' />
             </View>
         </TouchableWithoutFeedback>
     )
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        height: 50,
+        height: 70,
         borderBottomWidth: 2,
         borderRadius: 3,
         borderColor: 'grey',
@@ -63,11 +65,11 @@ const styles = StyleSheet.create({
         // fontFamily: globalstyle.font.fontFamily,
     }, Topa: {
         backgroundColor: globalstyle.color2.backgroundColor,
-        width: 70,
-        height: 28,
+        width: 100,
+        height: 35,
         marginLeft: 5,
         marginRight: 5,
-        borderRadius: 4,
+        borderRadius: 6,
         fontFamily: globalstyle.font.fontFamily,
     }
 })

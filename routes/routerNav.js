@@ -2,8 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Navs from './stacknavigation'
+import AboutNavs from './stacknavigation2'
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useColorScheme } from 'react-native';
+
 
 var Drawer = createDrawerNavigator()
 
@@ -33,7 +35,7 @@ var MyTheme = {
 };
 
 var glbl;
-export var chngglobthem = (e)=>{
+export var chngglobthem = (e) => {
     glbl(e)
 }
 
@@ -44,10 +46,12 @@ export default function Dooon() {
     glbl = setscheme;
 
 
+
     return (
         <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
-            <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' }, headerShown: false }} initialRouteName="Home">
-                <Drawer.Screen name="Home" component={Navs} />
+            <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' } }} initialRouteName="Home">
+                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Home" component={Navs} />
+                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="About" component={AboutNavs} />
             </Drawer.Navigator>
         </NavigationContainer>
     )

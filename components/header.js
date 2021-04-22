@@ -5,9 +5,10 @@ import { globalstyle } from '../assets/styles/gloabalstyles';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { chngglobthem } from '../routes/routerNav'
+// import { chngglobthem } from '../routes/routerNav'
 
-export default function Headcomp({ navigation }) {
+export default function Headcomp({ navigation, chngglobthem }) {
+    // console.log(navigation);
     var [modalOne, setModal] = React.useState(false)
     var [imgtheme, setimgtheme] = React.useState({ img: require('../assets/Images/sun.png'), key: 'sun' })
     var PageSlider = () => {
@@ -22,7 +23,7 @@ export default function Headcomp({ navigation }) {
             setimgtheme({ img: require('../assets/Images/sun.png'), key: 'sun' })
             chngglobthem('light')
         } else {
-            setimgtheme({ img: require('../assets/Images/moon.jpg'), key: 'moon' })
+            setimgtheme({ img: require('../assets/Images/moon101.png'), key: 'moon' })
             chngglobthem('dark')
         }
         // console.log(imgtheme);

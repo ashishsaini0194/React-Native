@@ -1,13 +1,21 @@
 {
-  "name": "My Notes",
-  "displayName": "My Notes",
+  "name": "Notes Maker",
+  "displayName": "Notes Maker",
   "expo": {
-    "name": "proj3",
-    "slug": "proj3",
+    "name": "Notes Maker",
+    "slug": "Notes Maker",
     "version": "1.0.0",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/Images/logo.png",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "splash": {
+      "image": "./assets/Images/splash2.png",
+      "backgroundColor": "#000000"
+    },
+    "android": {
+      "package": "com.ashish0194.proj3"
+    }
   }
 }
