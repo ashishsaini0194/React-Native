@@ -3,7 +3,7 @@
   "displayName": "Notes Maker",
   "expo": {
     "name": "Notes Maker",
-    "slug": "Notes Maker",
+    "slug": "Make-Notes",
     "version": "1.0.0",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/Images/logo.png",
@@ -11,11 +11,16 @@
       "**/*"
     ],
     "splash": {
-      "image": "./assets/Images/splash2.png",
-      "backgroundColor": "#000000"
+      "image": "./assets/Images/splash.png",
+      "backgroundColor": "#01295D",
+      "resize-mode": "contain"
     },
     "android": {
-      "package": "com.ashish0194.proj3"
+      "package": "com.ashish0194.proj3",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Images/adaptive-icon.png",
+        "backgroundColor": "#01295D"
+      }
     }
   }
 }

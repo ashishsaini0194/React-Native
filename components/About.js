@@ -1,8 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native'
-import { Header } from 'react-native/Libraries/NewAppScreen';
-import Headcomp from './header';
 
 export default function About() {
     var theme = useTheme().colors;

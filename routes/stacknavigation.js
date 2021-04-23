@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { globalstyle } from '../assets/styles/gloabalstyles';
 import Home from '../components/home'
 import Anote from '../components/singleNote'
 import Headcomp from '../components/header'

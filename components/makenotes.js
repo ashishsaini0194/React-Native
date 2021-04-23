@@ -14,16 +14,18 @@ export default function Makenotes({ updatenotes, functoclose }) {
     }
     var theme = useTheme().colors;
     return (
-        <TouchableWithoutFeedback  onPress={() => { Keyboard.dismiss() }}>
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
             <View style={{ ...styles.makenotes, backgroundColor: theme.background, borderColor: theme.border }}>
                 <View style={{ ...styles.aboveView, borderColor: theme.border, backgroundColor: theme.headercolor }}>
                     <Entypo name="cross" onPress={functoclose} size={30} color={theme.text} />
                     <TouchableOpacity onPress={() => { updatenotes(text), text1.clear(), functoclose() }} style={{ ...styles.Topa, backgroundColor: theme.background }} ><Text style={{ fontFamily: globalstyle.font.fontFamily, textAlign: 'center', fontSize: 17, marginTop: 5, color: theme.text }}>Add</Text></TouchableOpacity>
                 </View>
-                <ScrollView style={{ padding: 20 }}>
-                    <TextInput autoFocus={true} ref={input => { text1 = input }} placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
-                </ScrollView>
-                <StatusBar backgroundColor='black' />
+                <View style={{ flex: 1, }}>
+                    <ScrollView style={{ margin: 20 }}>
+                        <TextInput autoFocus={true} ref={input => { text1 = input }} placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
+                    </ScrollView>
+                    <StatusBar backgroundColor='black' />
+                </View>
             </View>
         </TouchableWithoutFeedback>
     )
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
+
         // alignItems: 'center',
         paddingBottom: 5
     }, aboveView: {

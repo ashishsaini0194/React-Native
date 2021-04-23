@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native';
+import { StyleSheet, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native';
 import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
 import asyncstore from '@react-native-async-storage/async-storage'
@@ -13,7 +13,7 @@ export default function Home(props) {
     var [notes, set_notes] = React.useState()
     var clear = async () => {
         await asyncstore.removeItem('data')
-        console.log('cleared');
+        // console.log('cleared');
         // var endres = getData('end')
         // endres.then((e) => {
         //     console.log('end result is : ', e);
@@ -95,7 +95,7 @@ export default function Home(props) {
                 var datatodel = e.filter((e) => {
                     return e.key != key
                 })
-                console.log(datatodel);
+                // console.log(datatodel);
                 clear()
                 setData(datatodel)
                 set_notes(datatodel)
@@ -115,13 +115,13 @@ export default function Home(props) {
                     return true
                 }
             })
-            console.log('real data is : ', realdata);
+            // console.log('real data is : ', realdata);
             set_notes(realdata)
             setData(realdata)
         })
     }
     var deletenotes = (key) => {
-        console.log('key we recieved: ', key);
+        // console.log('key we recieved: ', key);
         set_notes((prevnotes) => {
             return prevnotes.filter((e) => {
                 return e.key !== key
@@ -139,7 +139,7 @@ export default function Home(props) {
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss()
         }}>
-            <ImageBackground blurRadius={9} style={styles.container} source={require('../assets/Images/e.jpg')} >
+            <ImageBackground blurRadius={9} style={styles.container}  >
 
                 {/* <Headcomp /> */}
                 <Makenotebut updatenotes={updatenotes} />

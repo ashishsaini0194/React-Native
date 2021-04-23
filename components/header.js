@@ -5,7 +5,6 @@ import { globalstyle } from '../assets/styles/gloabalstyles';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-// import { chngglobthem } from '../routes/routerNav'
 
 export default function Headcomp({ navigation, chngglobthem }) {
     // console.log(navigation);
@@ -15,11 +14,11 @@ export default function Headcomp({ navigation, chngglobthem }) {
         navigation.openDrawer()
     }
     var darkorlight = useTheme()
-
-
+    // console.log(darkorlight);
     var switchIt = () => {
         //switch the theme
-        if (imgtheme.key == 'moon') {
+        setModal(true)
+        if (darkorlight.colors.background == 'black') {
             setimgtheme({ img: require('../assets/Images/sun.png'), key: 'sun' })
             chngglobthem('light')
         } else {
@@ -27,12 +26,7 @@ export default function Headcomp({ navigation, chngglobthem }) {
             chngglobthem('dark')
         }
         // console.log(imgtheme);
-        setModal(true)
-        setTimeout(() => setModal(false), 1000)
-        // chngthm()
-        // colorScheme = 'dark'
-
-        console.log(darkorlight);
+        setTimeout(() => setModal(false), 1500)
     }
 
     return (

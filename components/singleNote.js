@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, Keyboard, ScrollView, TouchableWithoutFeedback} from 'react-native';
 import { useTheme } from '@react-navigation/native'
-import Clipboard from 'expo-clipboard';
 import Headcomp2 from '../components/header2'
 
 export default function Anote({ navigation }) {
@@ -10,7 +9,7 @@ export default function Anote({ navigation }) {
 
     // console.log(data);
     var theme = useTheme()
-    console.log(navigation);
+    // console.log(navigation);
     var set_notes = navigation.getState().routes[1].params.b;
     var setData = navigation.getState().routes[1].params.d;
     var analyzeData = navigation.getState().routes[1].params.e;
@@ -37,7 +36,7 @@ export default function Anote({ navigation }) {
     // }
     return (
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }} >
-            <View>
+            <View style={{flex:1}}>
                 <Headcomp2 navigation={navigation} analyzeData={analyzeData} />
                 <View style={styles.View1}>
                     <ScrollView >
@@ -54,8 +53,8 @@ var styles = StyleSheet.create({
     text1: {
         fontSize: 16,
         padding: 20,
-        height: 'auto',
     }, View1: {
-        height: 'auto',
+        // height: 400,
+        flex:1
     }
 })
