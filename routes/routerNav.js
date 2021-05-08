@@ -5,6 +5,7 @@ import Navs from './stacknavigation'
 import AboutNavs from './stacknavigation2'
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useColorScheme } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 var Drawer = createDrawerNavigator()
@@ -34,13 +35,30 @@ var MyTheme = {
     }
 };
 
+var setData = async (e) => {
+    // console.log(e);
+    await AsyncStorage.setItem('theme', JSON.stringify({ 'theme': e }))
+    // console.log('theme saved');
+}
+
 var glbl;
 export var chngglobthem = (e) => {
     glbl(e)
+    setData(e)
 }
 
 
+
 export default function Dooon() {
+
+    var getData = async () => {
+        var d1 = await AsyncStorage.getItem('theme')
+        d1 = JSON.parse(d1)
+        // console.log(d1.theme);
+        setscheme(d1.theme)
+    }
+    getData()
+
     var [scheme, setscheme] = React.useState('light')
     // console.log(scheme);
     glbl = setscheme;

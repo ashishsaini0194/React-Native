@@ -17,6 +17,7 @@
     },
     "android": {
       "package": "com.ashish0194.proj3",
+      "userInterfaceStyle": "light",
       "adaptiveIcon": {
         "foregroundImage": "./assets/Images/adaptive-icon.png",
         "backgroundColor": "#01295D"
