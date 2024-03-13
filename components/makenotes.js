@@ -18,11 +18,11 @@ export default function Makenotes({ updatenotes, functoclose }) {
             <View style={{ ...styles.makenotes, backgroundColor: theme.background, borderColor: theme.border }}>
                 <View style={{ ...styles.aboveView, borderColor: theme.border, backgroundColor: theme.headercolor }}>
                     <Entypo name="cross" onPress={functoclose} size={30} color={theme.text} />
-                    <TouchableOpacity onPress={() => { updatenotes(text), text1.clear(), functoclose() }} style={{ ...styles.Topa, backgroundColor: theme.background }} ><Text style={{ fontFamily: globalstyle.font.fontFamily, textAlign: 'center', fontSize: 17, marginTop: 5, color: theme.text }}>Add</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => { updatenotes(text), text.clear(), functoclose() }} style={{ ...styles.Topa, backgroundColor: theme.background }} ><Text style={{ fontFamily: globalstyle.font.fontFamily, textAlign: 'center', fontSize: 17, marginTop: 5, color: theme.text }}>Add</Text></TouchableOpacity>
                 </View>
                 <View style={{ flex: 1, }}>
                     <ScrollView style={{ margin: 20 }}>
-                        <TextInput autoFocus={true} ref={input => { text1 = input }} placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
+                        <TextInput autoFocus={true} ref={input => { text = input }} placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
                     </ScrollView>
                     <StatusBar backgroundColor='black' />
                 </View>

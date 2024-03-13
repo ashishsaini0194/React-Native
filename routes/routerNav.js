@@ -52,10 +52,14 @@ export var chngglobthem = (e) => {
 export default function Dooon() {
 
     var getData = async () => {
-        var d1 = await AsyncStorage.getItem('theme')
-        d1 = JSON.parse(d1)
-        // console.log(d1.theme);
-        setscheme(d1.theme)
+        try {
+            var d1 = await AsyncStorage.getItem('theme')
+            d1 = JSON.parse(d1)
+            // console.log(d1.theme);
+            setscheme(d1.theme)
+        } catch (e) {
+
+        }
     }
     getData()
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import {LogBox} from 'react-native'
+// import {LogBox} from 'react-native'
 import Navs from './routes/routerNav';
 
 export default function App() {
-  LogBox.ignoreAllLogs()
+  // LogBox.ignoreAllLogs()
   return (
     <Navs />
   )

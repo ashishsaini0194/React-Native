@@ -16,7 +16,7 @@ export default function ShowComponent({ a, deletenotes, navigation, set_notes, s
     var theme = useTheme()
 
 
-    navigatetoOther = (e, f) => {
+    const navigatetoOther = (e, f) => {
         navigation.navigate('Details', { a: e, b: set_notes, c: f, d: setData, e: analyzeData })
         // routerNav('false')
     }
