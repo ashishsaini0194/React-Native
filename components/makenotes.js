@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Text, Keyboard } from 'react-native';
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useTheme } from '@react-navigation/native'
@@ -8,6 +8,7 @@ import { useTheme } from '@react-navigation/native'
 export default function Makenotes({ updatenotes, functoclose }) {
 
     var [text, settext] = React.useState('');
+    const textRef = useRef(null);
     var chngtext = (e) => {
         // console.log(e)
         settext(e)
@@ -19,11 +20,30 @@ export default function Makenotes({ updatenotes, functoclose }) {
             <View style={{ ...styles.makenotes, backgroundColor: theme.background, borderColor: theme.border }}>
                 <View style={{ ...styles.aboveView, borderColor: theme.border, backgroundColor: theme.headercolor }}>
                     {/* <Entypo name="cross" onPress={functoclose} size={30} color={theme.text} /> */}
-                    <TouchableOpacity onPress={() => { updatenotes(text), text.clear(), functoclose() }} style={{ ...styles.Topa, backgroundColor: theme.background }} ><Text style={{ fontFamily: globalstyle.font.fontFamily, textAlign: 'center', fontSize: 17, marginTop: 5, color: theme.text }}>Add</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => { updatenotes(text), textRef.current.clear(), functoclose() }}
+                        style={{ ...styles.Topa, backgroundColor: theme.background }} >
+                        <Text style={{
+                            fontFamily: globalstyle.font.fontFamily,
+                            textAlign: 'center', fontSize: 17,
+                            marginTop: 5,
+                            color: theme.text
+                        }}>
+                            Add</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={{ flex: 1, }}>
                     <ScrollView style={{ margin: 20 }}>
-                        <TextInput autoFocus={true} ref={input => { text = input }} placeholder=' Type here..' placeholderTextColor={theme.text} multiline={true} onChangeText={chngtext} style={{ ...styles.TextInp, color: theme.text, backgroundColor: theme.background }}></TextInput>
+                        <TextInput
+                            autoFocus={true}
+                            ref={textRef}
+                            placeholder=' Type here..' placeholderTextColor={theme.text}
+                            multiline={true} onChangeText={chngtext} style={{
+                                ...styles.TextInp,
+                                color: theme.text,
+                                backgroundColor: theme.background
+                            }}>
+
+                        </TextInput>
                     </ScrollView>
                     {/* <StatusBar backgroundColor='black' /> */}
                 </View>
