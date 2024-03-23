@@ -13,6 +13,7 @@ export default function Makenotes({ updatenotes, functoclose }) {
         settext(e)
     }
     var theme = useTheme().colors;
+    console.log('makenotes.ts')
     return (
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
             <View style={{ ...styles.makenotes, backgroundColor: theme.background, borderColor: theme.border }}>

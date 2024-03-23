@@ -1,11 +1,19 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 // import { createDrawerNavigator } from '@react-navigation/drawer'
-import Navs from './stacknavigation'
-// import AboutNavs from './stacknavigation2'
+// import Navs from './stacknavigation'
+import AboutNavs from './stacknavigation2'
 import { globalstyle } from '../assets/styles/gloabalstyles';
-import { useColorScheme } from 'react-native';
+import { TextComponent, useColorScheme, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import Anote from '../components/singleNote';
+import {
+    MemoryRouter,
+    NativeRouter, Route, Routes
+} from "react-router-native";
+import Home from '../components/home';
+// import { Home } from '../components/home';
 
 
 // var Drawer = createDrawerNavigator()
@@ -67,15 +75,55 @@ export default function Dooon() {
     // console.log(scheme);
     glbl = setscheme;
 
+    // const router = createBrowserRouter([
+    //     {
+    //         path: "/",
+    //         element: <Home />,
+    //         // loader: rootLoader,
+    //         children: [
+    //             {
+    //                 path: "Details",
+    //                 element: <Anote />,
+    //                 // loader: teamLoader,
+    //             },
+    //         ],
+    //     },
+    //     // {
+    //     //     path: "/About",
+    //     //     element: <AboutNavs />,
+    //     //     // loader: rootLoader,
+    //     //     // children: [
+    //     //     //     {
+    //     //     //         path: "team",
+    //     //     //         element: <Team />,
+    //     //     //         loader: teamLoader,
+    //     //     //     },
+    //     //     // ],
+    //     // },
+    // ]);
 
-
+    // return <RouterProvider router={router} />
+    // return <Text>hshe</Text>
     return (
-        <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
-            {/* <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' } }} initialRouteName="Home">
-                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Home" component={Navs} />
-                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="About" component={AboutNavs} />
-            </Drawer.Navigator> */}
-        </NavigationContainer>
-
+        <MemoryRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/About" element={<AboutNavs />} />
+            </Routes>
+        </MemoryRouter>
     )
+
+
+    // return (
+    //     // <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
+    //     //     {/* <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' } }} initialRouteName="Home">
+    //     //         <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Home" component={Navs} />
+    //     //         <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="About" component={AboutNavs} />
+    //     //     </Drawer.Navigator> */}
+    //     // </NavigationContainer>
+
+
+
+
+    // )
 }

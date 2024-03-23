@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Text, Modal } from 'react-native';
-// import { AntDesign } from '@expo/vector-icons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useTheme } from '@react-navigation/native'
 import Makenotes from './makenotes';
 
@@ -10,11 +10,13 @@ export default function InputButton({ updatenotes }) {
     var functoclose = () => {
         setVisib(false)
     }
+    console.log('working')
     return (
-        <View style={{ width: '100%' }}>
-            {/* <View style={{ ...style.butHead, backgroundColor: theme.background, borderColor: theme.border }}>
-                <AntDesign style={{ ...style.plusIcon, color: theme.text }} onPress={() => { setVisib(true) }} name="pluscircleo" size={24} color="black" />
-            </View> */}
+        <View style={{ width: '100%', height: "100%", backgroundColor: "red" }}>
+            <View style={{ ...style.butHead, backgroundColor: theme.background, borderColor: theme.border }}>
+                <AntDesign onPress={() => { setVisib(true) }} size={34} color="black" />
+                {/* <Text style={{ ...style.plusIcon, color: theme.text }} onPress={() => { console.log('h33'); setVisib(true) }}  >plus Icon</Text> */}
+            </View>
             <Modal animationType='slide' visible={visib}>
                 <Makenotes updatenotes={updatenotes} functoclose={functoclose} />
             </Modal>

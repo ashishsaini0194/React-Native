@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Modal, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native'
 import { globalstyle } from '../assets/styles/gloabalstyles';
-// import { Feather } from '@expo/vector-icons';
+import Feather from 'react-native-vector-icons/Feather';
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 

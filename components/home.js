@@ -1,6 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native';
+import { StyleSheet, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground, Text } from 'react-native';
 import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
 import asyncstore from '@react-native-async-storage/async-storage'
@@ -139,16 +139,17 @@ export default function Home(props) {
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss()
         }}>
-            <ImageBackground blurRadius={9} style={styles.container}  >
+            <>
 
                 {/* <Headcomp /> */}
                 <Makenotebut updatenotes={updatenotes} />
 
-                <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} />
+                {/* <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} /> */}
                 {/* <StatusBar style='auto' /> */}
 
-            </ImageBackground>
+            </>
         </TouchableWithoutFeedback >
+
 
     );
 
