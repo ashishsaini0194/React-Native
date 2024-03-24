@@ -121,6 +121,7 @@ import React from 'react';
 // import {LogBox} from 'react-native'
 import Navs from './routes/routerNav';
 import {Text} from 'react-native';
+import 'react-native-gesture-handler';
 
 export default function App() {
   // LogBox.ignoreAllLogs()
