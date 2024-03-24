@@ -12,9 +12,9 @@ export default function InputButton({ updatenotes }) {
     }
     console.log('working')
     return (
-        <View style={{ width: '100%', height: "100%"}}>
+        <View style={{ width: '100%' }}>
             <View style={{ ...style.butHead, backgroundColor: theme.background, borderColor: theme.border }}>
-                <Icon onPress={() => { setVisib(true) }} name='pluscircle' size={34} color="black"  />
+                <Icon onPress={() => { setVisib(true) }} name='pluscircle' size={34} color="black" />
                 {/* <Text style={{ ...style.plusIcon, color: theme.text }} onPress={() => { console.log('h33'); setVisib(true) }}  >plus Icon</Text> */}
             </View>
             <Modal animationType='slide' visible={visib}>

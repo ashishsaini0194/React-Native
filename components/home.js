@@ -144,7 +144,7 @@ export default function Home(props) {
                 {/* <Headcomp /> */}
                 <Makenotebut updatenotes={updatenotes} />
 
-                {/* <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} /> */}
+                <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} />
                 {/* <StatusBar style='auto' /> */}
 
             </>
