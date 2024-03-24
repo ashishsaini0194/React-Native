@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
-// import { AntDesign } from '@expo/vector-icons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useTheme } from '@react-navigation/native'
 
@@ -36,9 +36,13 @@ export default function ShowComponent({ a, deletenotes, navigation, set_notes, s
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
                             <View style={{ ...style.eachtext, borderColor: theme.colors.border }}>
                                 <Text numberOfLines={1} style={{ ...style.texttype1, color: theme.colors.text }} key={item.key} onPress={() => { navigatetoOther(item.notes, item.key) }} >  {item.notes}</Text>
-                                {/* <AntDesign style={{ ...style.icon1, color: theme.colors.text }} onPress={() => { deletenotes(item.key) }} name="delete" size={24} color="black" /> */}
+                                <AntDesign
+                                    style={{ ...style.icon1, color: theme.colors.text }}
+                                    onPress={() => { deletenotes(item.key) }}
+                                    name="delete"
+                                    size={24}
+                                    color="black" />
                             </View>
-                            {/* <TouchableOpacity onPress={() => { deletenotes(item.key) }} style={style.deleteButt}><Text style={{ fontSize: 14, color: 'black', }}>Del</Text></TouchableOpacity> */}
 
                         </View>
 
