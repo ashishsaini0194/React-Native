@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, Modal, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native'
 import { globalstyle } from '../assets/styles/gloabalstyles';
-import Feather from 'react-native-vector-icons/Feather';
-// import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export default function Headcomp({ navigation, chngglobthem }) {
@@ -31,9 +31,9 @@ export default function Headcomp({ navigation, chngglobthem }) {
 
     return (
         <View style={{ ...style.headcomp, backgroundColor: darkorlight.colors.headercolor }} >
-            {/* <Feather onPress={PageSlider} style={{ ...style.Menuicon, color: darkorlight.colors.text }} name="menu" size={24} color="black" /> */}
+            <Icon onPress={PageSlider} style={{ ...style.Menuicon, color: darkorlight.colors.text }} name="menu" size={28} color="black" />
             <Text style={{ ...style.textcomp, color: darkorlight.colors.text }}>Notes Maker</Text>
-            {/* <MaterialCommunityIcons style={{ ...style.themeDn, color: darkorlight.colors.text }} onPress={switchIt} name="theme-light-dark" size={24} color="black" /> */}
+            <MaterialCommunityIcons style={{ ...style.themeDn, color: darkorlight.colors.text }} onPress={switchIt} name="theme-light-dark" size={24} color="black" />
             <Modal visible={modalOne} animationType={'fade'} transparent={true}  >
 
                 <View style={style.modal}>
@@ -47,13 +47,14 @@ export default function Headcomp({ navigation, chngglobthem }) {
 
 const style = StyleSheet.create({
     headcomp: {
-        width: '100%',
-        height: '100%',
+        width: '125%',
+        flex: 1,
+        // height: '100%',
         backgroundColor: globalstyle.color2.backgroundColor,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     }, textcomp: {
         fontSize: 20,
         // marginTop: 15,

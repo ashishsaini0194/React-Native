@@ -12,7 +12,12 @@ export default function Navs(props) {
     var theme = useTheme()
     return (
         <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: theme.colors.headercolor } }} initialRouteName="Homefirst">
-            <Stack.Screen options={({ navigation }) => { return { title: 'Home', headerTitle: () => <Headcomp navigation={navigation} chngglobthem={props.route.params.ashish} /> } }} name="Homefirst" component={Home} />
+            <Stack.Screen options={({ navigation }) => {
+                return {
+                    title: 'Home', headerTitle: () => <Headcomp navigation={navigation}
+                        chngglobthem={props.route.params.ashish} />
+                }
+            }} name="Homefirst" component={Home} />
             <Stack.Screen options={{ title: 'Details', headerShown: false }} name="Details" component={Anote} />
         </Stack.Navigator>
         // <></>
