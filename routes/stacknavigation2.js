@@ -10,8 +10,8 @@ export default function Navs(props) {
     // console.log('sdfd',props);
     var theme = useTheme()
     return (
-        <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: theme.colors.headercolor } }} initialRouteName="About">
-            <Stack.Screen options={({ navigation }) => { return { headerTitle: () => <Headcomp navigation={navigation} chngglobthem={props.route.params.ashish} /> } }} name="About" component={About} />
+        <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: theme.colors.headercolor } }} initialRouteName="AboutPage">
+            <Stack.Screen options={({ navigation }) => { return { headerTitle: () => <Headcomp navigation={navigation} chngglobthem={props.route.params.ashish} /> } }} name="AboutPage" component={About} />
         </Stack.Navigator>
         // <></>
     )
