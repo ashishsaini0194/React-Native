@@ -35,7 +35,7 @@ export default function ShowComponent({ a, deletenotes, navigation, set_notes, s
                     renderItem={({ item }) => (
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
                             <View style={{ ...style.eachtext, borderColor: theme.colors.border }}>
-                                <Text numberOfLines={1} style={{ ...style.texttype1, color: theme.colors.text }} key={item.key} onPress={() => { navigatetoOther(item.notes, item.key) }} >  {item.notes}</Text>
+                                <Text numberOfLines={1} style={{ ...style.texttype1, color: theme.colors.text }} key={item.userId} onPress={() => { navigatetoOther(item.notes, item.key) }} >  {item.textData}</Text>
                                 <AntDesign
                                     style={{ ...style.icon1, color: theme.colors.text }}
                                     onPress={() => { deletenotes(item.key) }}

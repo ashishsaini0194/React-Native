@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground, Text } from 'react-native';
 import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
-import asyncstore from '@react-native-async-storage/async-storage'
+// import asyncstore from '@react-native-async-storage/async-storage'
 
 import { useQuery } from '@realm/react';
 import { Notes, User } from '../App';
@@ -18,10 +18,6 @@ export default function Home(props) {
     const realm = useRealm();
 
 
-    const AllNotes = useQuery(Notes);
-    console.log(AllNotes)
-
-
     var [notes, set_notes] = React.useState()
     var clear = async () => {
         await asyncstore.removeItem('data')
@@ -34,15 +30,17 @@ export default function Home(props) {
     // clear()
     var getData = async (a) => {
 
+        const AllNotes = useQuery(Notes);
+        console.log(AllNotes, AllNotes[0])
 
-        var data = await asyncstore.getItem('data')
+        // var data = await asyncstore.getItem('data')
         if (a == 'start') {
-            if (JSON.parse(data) != null) {
+            if (AllNotes != null) {
                 // console.log('data is not null');
-                set_notes(JSON.parse(data))
+                set_notes(AllNotes)
             }
         } else {
-            return JSON.parse(data)
+            return AllNotes
         }
 
         // console.log(JSON.parse(data));
@@ -56,11 +54,11 @@ export default function Home(props) {
         clear()
         await asyncstore.setItem('data', JSON.stringify(e))
         const realmData = {
-            _id: new BSON.ObjectId(ObjectId),
-            userId: new BSON.ObjectId,
+            _id: new BSON.ObjectId(),
+            userId: new BSON.ObjectId(),
             textData: e[0].notes,
         }
-        // console.log({ realmData }, e)
+        console.log({ realmData }, e)
         let ops;
         realm.write(() => {
             ops = realm.create("note", realmData)
