@@ -121,8 +121,57 @@ import React from 'react';
 import {LogBox} from 'react-native';
 import Navs from './routes/routerNav';
 import 'react-native-gesture-handler';
+import Realm, {ObjectSchema, BSON} from 'realm';
+import {RealmProvider} from '@realm/react';
+
+export class User extends Realm.Object<User> {
+  // name!: string;
+  // email?: string;
+  // phone?: string;
+
+  static schema: ObjectSchema = {
+    name: 'user',
+    properties: {
+      _id: {type: 'objectId'},
+      email: {type: 'string', optional: true},
+      phone: {type: 'string', optional: true},
+    },
+    primaryKey: '_id',
+  };
+}
+
+export class Notes extends Realm.Object<Notes> {
+  // name!: string;
+  // email?: string;
+  // phone?: string;
+
+  static schema: ObjectSchema = {
+    name: 'note',
+    properties: {
+      _id: {type: 'objectId'},
+      textData: {type: 'string'},
+      userId: {type: 'objectId'},
+    },
+    primaryKey: '_id',
+  };
+}
+
+const EachNote = {
+  name: 'eachNote',
+  properties: {
+    key: {type: 'string'},
+    notes: {type: 'string'},
+  },
+};
 
 export default function App() {
   LogBox.ignoreAllLogs();
-  return <Navs />;
+  return (
+    <RealmProvider
+      schema={[User, Notes]}
+      schemaVersion={2}
+      deleteRealmIfMigrationNeeded>
+      <Navs />
+    </RealmProvider>
+  );
 }
