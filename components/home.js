@@ -1,9 +1,9 @@
 // import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground, Text } from 'react-native';
 import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
-// import asyncstore from '@react-native-async-storage/async-storage'
+import asyncstore from '@react-native-async-storage/async-storage'
 
 import { useQuery } from '@realm/react';
 import { Notes, User } from '../App';
@@ -14,41 +14,57 @@ import { useRealm } from '@realm/react';
 
 
 
+
 export default function Home(props) {
+
+
     const realm = useRealm();
 
-
-    var [notes, set_notes] = React.useState()
+    var [notes, set_notes] = React.useState(null)
     var clear = async () => {
         await asyncstore.removeItem('data')
-        // console.log('cleared');
-        // var endres = getData('end')
-        // endres.then((e) => {
-        //     console.log('end result is : ', e);
-        // })
-    }
-    // clear()
-    var getData = async (a) => {
 
-        const AllNotes = useQuery(Notes);
-        console.log(AllNotes, AllNotes[0])
-
-        // var data = await asyncstore.getItem('data')
-        if (a == 'start') {
-            if (AllNotes != null) {
-                // console.log('data is not null');
-                set_notes(AllNotes)
-            }
-        } else {
-            return AllNotes
-        }
-
-        // console.log(JSON.parse(data));
-        return JSON.parse(data)
     }
-    if (notes == null) {
-        getData('start');
-    }
+
+    const AllNotes = useQuery(Notes);
+    console.log(AllNotes)
+    // useEffect(() => {
+    //     getData('start');
+    // }, [])
+
+
+    // // useEffect(() => {
+    // //     const saveUserId = async () => {
+    // //         await asyncstore.setItem('userLoggedIn', JSON.stringify(e))
+    // //     }
+    // // }, [])
+
+    // var getData = async (a) => {
+
+    //     const AllNotes = useQuery(Notes);
+
+    //     console.log(AllNotes)
+    //     // const allUserNotes = useQuery(Notes, (AllNotes) => {
+    //     //     return AllNotes.filtered('userId == 66095de1336f27b3e51e00ae');
+    //     // })
+    //     // console.log(allUserNotes)
+
+    //     // var data = await asyncstore.getItem('data')
+    //     if (a == 'start') {
+    //         if (AllNotes != null) {
+    //             // console.log('data is not null');
+    //             set_notes(AllNotes)
+    //         }
+    //     }
+    //     // return AllNotes
+
+    //     // console.log(JSON.parse(data));
+    //     // return JSON.parse(data)
+    // }
+
+
+
+
 
     var setData = async (e) => {
         clear()
@@ -70,24 +86,24 @@ export default function Home(props) {
     }
 
 
-    var updatenotes = (textdata) => {
+    var updatenotes = async (textdata) => {
         // alert(textdata)
         if (textdata.length > 0) {
             // set_notes((prevnotes) => {
             const uniqueKey = Math.random().toString();
 
-            var data = getData('end')
-            data.then((e) => {
-                if (e == null) {
+            var data = await getData('end')
+            data.then(() => {
+                if (!notes) {
                     setData([{ notes: textdata, key: uniqueKey }])
                     set_notes([{ notes: textdata, key: uniqueKey }])
                 } else {
                     // console.log('BF data is :', e);
-                    e[e.length] = { notes: textdata, key: uniqueKey };
+                    notes[notes.length] = { notes: textdata, key: uniqueKey };
                     // console.log('AF data is :', e);
                     // e.push({ notes: textdata, key: uniqueKey })
-                    setData(e)
-                    set_notes(e)
+                    setData(notes)
+                    set_notes(notes)
                 }
             })
 
@@ -109,9 +125,9 @@ export default function Home(props) {
     }
 
     var deleteData = async (key) => {
-        var data = getData('end')
-        if (data.length != 0) {
-            data.then((e) => {
+        await getData('end')
+        if (notes.length != 0) {
+            notes.then((e) => {
                 // for (var i = 0; i < e.length; i++){
                 //     if(key == e[i]){
 
@@ -129,21 +145,22 @@ export default function Home(props) {
 
     }
 
-    var analyzeData = () => {
-        var data = getData('end');
-        data.then((data1) => {
-            var realdata = data1.filter((e) => {
+    var analyzeData = async () => {
+        await getData('end');
+        // data.then(() => {
 
-                if (e.notes == " " || e.notes == "  " || e.notes == "   ") {
-                    return false
-                } else {
-                    return true
-                }
-            })
-            // console.log('real data is : ', realdata);
-            set_notes(realdata)
-            setData(realdata)
+        // })
+        var realdata = notes.filter((e) => {
+
+            if (e.notes == " " || e.notes == "  " || e.notes == "   ") {
+                return false
+            } else {
+                return true
+            }
         })
+        // console.log('real data is : ', realdata);
+        set_notes(realdata)
+        setData(realdata)
     }
     var deletenotes = (key) => {
         // console.log('key we recieved: ', key);
@@ -169,7 +186,7 @@ export default function Home(props) {
                 {/* <Headcomp /> */}
                 <Makenotebut updatenotes={updatenotes} />
 
-                <ShowComponent a={notes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} />
+                <ShowComponent a={AllNotes} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} />
                 {/* <StatusBar style='auto' /> */}
 
             </>

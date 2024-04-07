@@ -49,7 +49,7 @@ var setData = async (e) => {
     // console.log('theme saved');
 }
 
-var glbl;
+var glbl = () => { };
 export var chngglobthem = (e) => {
     glbl(e)
     setData(e)

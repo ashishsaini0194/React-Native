@@ -165,7 +165,7 @@ const EachNote = {
 };
 
 export default function App() {
-  LogBox.ignoreAllLogs();
+  // LogBox.ignoreAllLogs();
   return (
     <RealmProvider
       schema={[User, Notes]}

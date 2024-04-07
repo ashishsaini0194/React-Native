@@ -1,18 +1,18 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, Keyboard, ScrollView, TouchableWithoutFeedback} from 'react-native';
+import { View, TextInput, StyleSheet, Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { useTheme } from '@react-navigation/native'
 import Headcomp2 from '../components/header2'
 
 export default function Anote({ navigation }) {
-    var data = navigation.getState().routes[1].params.a;
-    var key = navigation.getState().routes[1].params.c;
+    var data = navigation.getState().routes[1]?.params.a;
+    var key = navigation.getState().routes[1]?.params.c;
 
     // console.log(data);
     var theme = useTheme()
-    // console.log(navigation);
-    var set_notes = navigation.getState().routes[1].params.b;
-    var setData = navigation.getState().routes[1].params.d;
-    var analyzeData = navigation.getState().routes[1].params.e;
+    console.log(navigation);
+    var set_notes = navigation.getState().routes[1]?.params.b;
+    var setData = navigation.getState().routes[1]?.params.d;
+    var analyzeData = navigation.getState().routes[1]?.params.e;
     var savestate = (data) => {
 
         // console.log(data);
@@ -36,7 +36,7 @@ export default function Anote({ navigation }) {
     // }
     return (
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }} >
-            <View style={{flex:1}}>
+            <View style={{ flex: 1 }}>
                 <Headcomp2 navigation={navigation} analyzeData={analyzeData} />
                 <View style={styles.View1}>
                     <ScrollView >
@@ -55,6 +55,6 @@ var styles = StyleSheet.create({
         padding: 20,
     }, View1: {
         // height: 400,
-        flex:1
+        flex: 1
     }
 })
