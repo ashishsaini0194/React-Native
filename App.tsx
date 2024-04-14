@@ -121,8 +121,20 @@ import React from 'react';
 import {LogBox} from 'react-native';
 import Navs from './routes/routerNav';
 import 'react-native-gesture-handler';
+import {useAuth0, Auth0Provider} from 'react-native-auth0';
 
-export default function App() {
-  LogBox.ignoreAllLogs();
-  return <Navs />;
-}
+// export default function App() {
+//   LogBox.ignoreAllLogs();
+//   return <Navs />;
+// }
+console.log(process.env.Auth0_domain);
+
+export default () => {
+  return (
+    <Auth0Provider
+      domain={'dev-vspx1k7ak3aju0a1.us.auth0.com'}
+      clientId={'IIK1rKlXe2vJ0t2TWvfImAGBNzUoCCnY'}>
+      <Navs />
+    </Auth0Provider>
+  );
+};

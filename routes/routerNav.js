@@ -6,6 +6,7 @@ import AboutNavs from './stacknavigation2'
 import { globalstyle } from '../assets/styles/gloabalstyles';
 import { TextComponent, useColorScheme, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth0, Auth0Provider } from 'react-native-auth0';
 
 import Anote from '../components/singleNote';
 import {
@@ -13,6 +14,7 @@ import {
     NativeRouter, Route, Routes
 } from "react-router-native";
 import Home from '../components/home';
+import Login from '../components/Login';
 // import { Home } from '../components/home';
 
 
@@ -84,10 +86,12 @@ export default function Dooon() {
     //     </MemoryRouter>
     // )
 
-
+    const { user } = useAuth0();
+    console.log({ user })
     return (
         <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
-            <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' } }} initialRouteName="Home">
+            <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' } }} initialRouteName={user ? 'Home' : "Login"}>
+                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Login" component={Login} />
                 <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Home" component={Navs} />
                 <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="About" component={AboutNavs} />
             </Drawer.Navigator>

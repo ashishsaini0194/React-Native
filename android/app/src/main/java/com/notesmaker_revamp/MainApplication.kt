@@ -1,4 +1,4 @@
-package com.notesmaker_revamp
+package com.notesmaker
 
 import android.app.Application
 import com.facebook.react.PackageList
