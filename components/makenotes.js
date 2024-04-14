@@ -4,6 +4,7 @@ import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useTheme } from '@react-navigation/native'
 // import { Entypo } from '@expo/vector-icons';
 // import { StatusBar } from 'expo-status-bar';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function Makenotes({ updatenotes, functoclose }) {
 
@@ -20,6 +21,7 @@ export default function Makenotes({ updatenotes, functoclose }) {
             <View style={{ ...styles.makenotes, backgroundColor: theme.background, borderColor: theme.border }}>
                 <View style={{ ...styles.aboveView, borderColor: theme.border, backgroundColor: theme.headercolor }}>
                     {/* <Entypo name="cross" onPress={functoclose} size={30} color={theme.text} /> */}
+                    <Icon onPress={() => { functoclose() }} name="arrowleft" size={25} style={{ ...styles.icon, color: theme.text }} />
                     <TouchableOpacity onPress={() => { updatenotes(text), textRef.current.clear(), functoclose() }}
                         style={{ ...styles.Topa, backgroundColor: theme.background }} >
                         <Text style={{
@@ -95,5 +97,7 @@ const styles = StyleSheet.create({
         marginRight: 5,
         borderRadius: 6,
         fontFamily: globalstyle.font.fontFamily,
+    }, icon: {
+        position: 'absolute', left: 20
     }
 })
