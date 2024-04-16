@@ -77,8 +77,8 @@ android {
 
     namespace "com.notesmaker"
     defaultConfig {
-        manifestPlaceholders = [auth0Domain: "dev-vspx1k7ak3aju0a1.us.auth0.com", auth0Scheme: "${applicationId}.auth0"] //Auth0 
         applicationId "com.notesmaker"
+        manifestPlaceholders = [auth0Domain: "dev-vspx1k7ak3aju0a1.us.auth0.com", auth0Scheme: "${applicationId}.auth0"] //Auth0 
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

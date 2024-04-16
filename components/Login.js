@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useAuth0 } from 'react-native-auth0';
 import { globalstyle } from '../assets/styles/gloabalstyles';
 
-function Login() {
-    const { authorize } = useAuth0();
+function Login({ navigation }) {
+    const { authorize, user } = useAuth0();
 
+    console.log({ user })
+    useEffect(() => {
+        if (user) {
+            console.log('navigating')
+            navigation.navigate('Home')
+        }
+    }, [user])
     const onPress = async () => {
         try {
-            await authorize();
+            await authorize({ scope: "openid email profile" });
         } catch (e) {
             console.log(e);
         }
