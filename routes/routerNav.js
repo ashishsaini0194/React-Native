@@ -10,9 +10,7 @@ import { useAuth0 } from 'react-native-auth0';
 
 
 import Anote from '../components/singleNote';
-import {
-    MemoryRouter,
-    NativeRouter, Route, Routes
+import {useNavigation
 } from "react-router-native";
 import Home from '../components/home';
 import Login from '../components/Login';
@@ -87,13 +85,14 @@ export default function Dooon() {
     //         </Routes>
     //     </MemoryRouter>
     // )
+    
 
     return (
         <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
             <Drawer.Navigator screenOptions={{ headerStyle: { backgroundColor: '#ff9900' } }} initialRouteName={user ? 'Home' : 'Login'}>
-                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Login" component={Login} />
-                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Home" component={Navs} />
-                <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="About" component={AboutNavs} />
+                {!user && <Drawer.Screen initialParams={{ 'ashish': chngglobthem }} options={{ headerShown: false }} name="Login" component={Login} />}
+                <Drawer.Screen initialParams={{ 'ashish': chngglobthem, user }} options={{ headerShown: false }} name="Home" component={Navs} />
+                <Drawer.Screen initialParams={{ 'ashish': chngglobthem, user }} options={{ headerShown: false }} name="About" component={AboutNavs} />
             </Drawer.Navigator>
         </NavigationContainer>
     )

@@ -1,18 +1,21 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native'
+import Logout from './Logout';
 
-export default function About() {
+export default function About({ navigation }) {
     var theme = useTheme().colors;
     return (
 
 
         <View style={{ ...styles.view1, backgroundColor: theme.background }} >
-            {/* <View style={styles.header}>
-                <Headcomp />
-            </View> */}
             <Image style={styles.img1} source={require('../assets/Images/mighty2.jpg')} />
-            <View style={{ ...styles.footer, backgroundColor: theme.headercolor }}><Text style={{ color: theme.text }}>Made By Ashish &copy; 2021</Text></View>
+
+            <View style={{ ...styles.footer, backgroundColor: theme.headercolor }}>
+                <Text style={{ color: theme.text, marginLeft: 25 }}>Made By Ashish &copy; 2021</Text>
+
+                <Logout navigation={navigation} />
+            </View>
         </View>
 
     )
@@ -35,7 +38,8 @@ const styles = StyleSheet.create({
         height: 70,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        // left: 10
+        // alignItems: 'center'
     }, header: {
         position: 'absolute',
         top: 0,
