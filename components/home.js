@@ -4,22 +4,19 @@ import { StyleSheet, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground,
 import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
 import asyncstore from '@react-native-async-storage/async-storage'
+import { useAuth0 } from 'react-native-auth0';
 
 
 
 
 export default function Home(props) {
-
+    const { user } = useAuth0();
     var [notes, set_notes] = React.useState()
     var clear = async () => {
         await asyncstore.removeItem('data')
-        // console.log('cleared');
-        // var endres = getData('end')
-        // endres.then((e) => {
-        //     console.log('end result is : ', e);
-        // })
+
     }
-    // clear()
+
     var getData = async (a) => {
         var data = await asyncstore.getItem('data')
         if (a == 'start') {
@@ -30,7 +27,6 @@ export default function Home(props) {
         } else {
             return JSON.parse(data)
         }
-
 
         return JSON.parse(data)
     }
@@ -49,13 +45,13 @@ export default function Home(props) {
         // alert(textdata)
         if (textdata.length > 0) {
             // set_notes((prevnotes) => {
-            const uniqueKey = Math.random().toString();
+            // const uniqueKey = Math.random().toString();
 
             var data = getData('end')
             data.then((e) => {
                 if (e == null) {
-                    setData([{ notes: textdata, key: uniqueKey }])
-                    set_notes([{ notes: textdata, key: uniqueKey }])
+                    setData([{ notes: textdata }])
+                    set_notes([{ notes: textdata }])
                 } else {
                     // console.log('BF data is :', e);
                     e[e.length] = { notes: textdata, key: uniqueKey };

@@ -4,14 +4,16 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
 
-function Logout({ navigation }) {
+function Logout({ navigation, user }) {
     const { clearSession } = useAuth0();
     var darkorlight = useTheme();
 
     const onPress = async () => {
         try {
-            await clearSession();
-            navigation.navigate('Login')
+            if (user) {
+                await clearSession();
+                navigation.navigate('Login')
+            }
         } catch (e) {
             console.log(e);
         }
@@ -22,7 +24,7 @@ function Logout({ navigation }) {
         //     <Text style={{ color: theme.text }}>Log Out</Text>
         //     {/* </View> */}
         // </TouchableOpacity>
-        <Icon onPress={onPress} style={{ ...styles.icon, color: darkorlight.colors.text }} name="log-out" size={24} />
+        <Icon onPress={onPress} style={{ ...styles.icon, color: user ? darkorlight.colors.text : 'gray' }} name="log-out" size={24} />
     )
 }
 
