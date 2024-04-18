@@ -23,19 +23,22 @@ function Login({ navigation }) {
     };
 
     return (
-        <View>
-            <TouchableOpacity onPress={() => debouncingFunc(onPress, 1000)}
-                style={{ ...style.loginBut }}
-            >
-                <Text style={{
-                    fontFamily: globalstyle.font.fontFamily,
-                    textAlign: 'center',
-                    fontSize: 17,
-                    marginTop: 5,
-                    color: 'white'
-                }}>
-                    Add</Text>
-            </TouchableOpacity>
+        <View style={{ flex: 1 }}>
+            <View style={{ position: 'absolute', bottom: 0, justifyContent: 'flex-end', width: '100%' }}>
+                <TouchableOpacity onPress={() => debouncingFunc(onPress, 1000)}
+                    style={{ ...style.buttonContainer }}
+                >
+                    <Text style={{
+                        fontFamily: globalstyle.font.fontFamily,
+                        textAlign: 'center',
+                        fontSize: 17,
+                        marginTop: 5,
+                        color: 'white',
+                        ...style.buttonText
+                    }}>
+                        Sign In</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -43,10 +46,16 @@ function Login({ navigation }) {
 export default Login
 
 const style = StyleSheet.create({
-    loginBut: {
-        width: 100,
-        height: 30,
-        backgroundColor: 'green'
-    }
+    buttonContainer: {
+        backgroundColor: 'green',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 })
 

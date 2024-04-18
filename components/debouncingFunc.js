@@ -1,9 +1,9 @@
 let timeout;
 
-export const debouncingFunc = (funcToExecute, time) => {
+export const debouncingFunc = (funcToExecute = () => { }, time) => {
     if (timeout) {
         clearTimeout(timeout)
         timeout = null;
     }
-    timeout = setTimeout(funcToExecute, [time])
+    timeout = setTimeout(funcToExecute, time)
 }

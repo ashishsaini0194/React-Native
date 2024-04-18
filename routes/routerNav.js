@@ -10,7 +10,8 @@ import { useAuth0 } from 'react-native-auth0';
 
 
 import Anote from '../components/singleNote';
-import {useNavigation
+import {
+    useNavigation
 } from "react-router-native";
 import Home from '../components/home';
 import Login from '../components/Login';
@@ -73,7 +74,7 @@ export default function Dooon() {
     }
     getData()
 
-    var [scheme, setscheme] = React.useState('light')
+    var [scheme, setscheme] = React.useState('dark')
     // console.log(scheme);
     glbl = setscheme;
 
@@ -85,7 +86,7 @@ export default function Dooon() {
     //         </Routes>
     //     </MemoryRouter>
     // )
-    
+
 
     return (
         <NavigationContainer theme={scheme === 'dark' ? MyTheme.moon : MyTheme.sun} >
