@@ -121,7 +121,7 @@ import React from 'react';
 import {LogBox} from 'react-native';
 import Navs from './routes/routerNav';
 import 'react-native-gesture-handler';
-import {useAuth0, Auth0Provider} from 'react-native-auth0';
+import {Auth0Provider} from 'react-native-auth0';
 
 // export default function App() {
 //   LogBox.ignoreAllLogs();
