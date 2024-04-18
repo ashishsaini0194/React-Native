@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useAuth0 } from 'react-native-auth0';
 import { globalstyle } from '../assets/styles/gloabalstyles';
+import { debouncingFunc } from './debouncingFunc';
 
 function Login({ navigation }) {
     const { authorize, user } = useAuth0();
@@ -9,10 +10,10 @@ function Login({ navigation }) {
     console.log({ user })
     useEffect(() => {
         if (user) {
-            console.log('navigating')
             navigation.navigate('Home')
         }
     }, [user])
+
     const onPress = async () => {
         try {
             await authorize({ scope: "openid email profile" });
@@ -20,10 +21,10 @@ function Login({ navigation }) {
             console.log(e);
         }
     };
+
     return (
-        // <div><button onPress={onPress} title="Log in" /></div>
         <View>
-            <TouchableOpacity onPress={onPress}
+            <TouchableOpacity onPress={() => debouncingFunc(onPress, 1000)}
                 style={{ ...style.loginBut }}
             >
                 <Text style={{
