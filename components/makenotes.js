@@ -5,15 +5,13 @@ import { useTheme } from '@react-navigation/native'
 // import { Entypo } from '@expo/vector-icons';
 // import { StatusBar } from 'expo-status-bar';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { debouncingFunc } from './debouncingFunc';
 
 export default function Makenotes({ updatenotes, functoclose }) {
 
     var [text, settext] = React.useState('');
     const textRef = useRef(null);
-    var chngtext = (e) => {
-        // console.log(e)
-        settext(e)
-    }
+
     var theme = useTheme().colors;
     console.log('makenotes.ts')
     return (
@@ -39,7 +37,9 @@ export default function Makenotes({ updatenotes, functoclose }) {
                             autoFocus={true}
                             ref={textRef}
                             placeholder=' Type here..' placeholderTextColor={theme.text}
-                            multiline={true} onChangeText={chngtext} style={{
+                            multiline={true}
+                            onChangeText={(e) => debouncingFunc(() => settext(e), 700)}
+                            style={{
                                 ...styles.TextInp,
                                 color: theme.text,
                                 backgroundColor: theme.background

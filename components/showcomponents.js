@@ -5,7 +5,7 @@ import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useTheme } from '@react-navigation/native'
 
 
-export default function ShowComponent({ a, deletenotes, navigation, set_notes, setData, analyzeData }) {
+export default function ShowComponent({ notes, deletenotes, navigation, set_notes, setData, analyzeData }) {
     // console.log('this is ', a);
     // var [iter, set_iter] = React.useState(0)
     // var list1 = [];
@@ -23,7 +23,7 @@ export default function ShowComponent({ a, deletenotes, navigation, set_notes, s
 
     // console.log('theme is : ', theme);
 
-
+    console.log(notes)
     return (
         <View style={{ ...style.alldata, backgroundColor: theme.colors.background }}>
             {/*<View style={style.pp}>{list1}</View>*/}
@@ -31,11 +31,17 @@ export default function ShowComponent({ a, deletenotes, navigation, set_notes, s
                 <FlatList
                     style={style.flat}
                     ListEmptyComponent={() => { return <View></View> }}
-                    data={a}
+                    data={notes}
                     renderItem={({ item }) => (
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' }}>
                             <View style={{ ...style.eachtext, borderColor: theme.colors.border }}>
-                                <Text numberOfLines={1} style={{ ...style.texttype1, color: theme.colors.text }} key={item.key} onPress={() => { navigatetoOther(item.notes, item.key) }} >  {item.notes}</Text>
+                                <Text
+                                    numberOfLines={1}
+                                    style={{ ...style.texttype1, color: theme.colors.text }}
+                                    key={item.key}
+                                    onPress={() => { navigatetoOther(item.textData, item.key) }} >
+                                    {item.textData}
+                                </Text>
                                 <AntDesign
                                     style={{ ...style.icon1, color: theme.colors.text }}
                                     onPress={() => { deletenotes(item.key) }}
