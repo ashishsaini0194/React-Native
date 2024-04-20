@@ -5,6 +5,7 @@ import Makenotebut from './makenotebutton';
 import ShowComponent from './showcomponents';
 import asyncstore from '@react-native-async-storage/async-storage'
 import { useAuth0 } from 'react-native-auth0';
+import { createItem } from './fetchApis';
 
 
 
@@ -35,7 +36,8 @@ export default function Home(props) {
     }
 
     var setData = async (e) => {
-        clear()
+        // clear()
+        // if (user) await createItem({ email: user.email, textdata: e.notes })
         await asyncstore.setItem('data', JSON.stringify(e))
         return;
     }
