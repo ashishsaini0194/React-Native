@@ -1,7 +1,9 @@
+const vercelUrl = 'https://notes-maker-backend-flax.vercel.app';
+
 // Function to fetch items using GET method
 export async function fetchItems(email) {
     try {
-        const response = await fetch(`http://10.0.2.2:3000/allNotes?email=${email}`);
+        const response = await fetch(`${vercelUrl}/allNotes?email=${email}`);
 
         // console.log({ response });
         if (!response.ok) {
@@ -19,7 +21,7 @@ export async function fetchItems(email) {
 export async function createItem(itemData) {
     try {
         // console.log({ itemData })
-        const response = await fetch('http://10.0.2.2:3000/note', {
+        const response = await fetch(`${vercelUrl}/note`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ export async function createItem(itemData) {
 // Function to update an item using PUT method
 export async function updateItem(id, textData) {
     try {
-        const response = await fetch(`http://10.0.2.2:3000/notes/${id}`, {
+        const response = await fetch(`${vercelUrl}/notes/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,7 +65,7 @@ export async function updateItem(id, textData) {
 // Function to delete an item using DELETE method
 export async function deleteItem(id) {
     try {
-        const response = await fetch(`http://10.0.2.2:3000/notes/${id}`, {
+        const response = await fetch(`${vercelUrl}/notes/${id}`, {
             method: 'DELETE',
         });
         // console.log({ response })
