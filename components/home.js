@@ -13,7 +13,7 @@ import uuid from 'react-native-uuid';
 
 export default function Home(props) {
     const { user } = useAuth0();
-    var [notes, set_notes] = React.useState({ key: 'sfsf', textData: 'sfs' })
+    var [notes, set_notes] = React.useState({})
 
     asyncstore.clear()
 
@@ -30,7 +30,7 @@ export default function Home(props) {
         }
 
         const key = `key_${uuid.v4()}`;
-        let dataToSave = {};
+        let dataToSave = { ...notes };
         dataToSave[key] = {
             textData: e,
             key
@@ -97,15 +97,12 @@ export default function Home(props) {
         //     setData(realdata)
         // })
     }
-    var deletenotes = (key) => {
-        // // console.log('key we recieved: ', key);
-        // set_notes((prevnotes) => {
-        //     return prevnotes.filter((e) => {
-        //         return e.key !== key
-        //     })
-
-        // })
-        // deleteData(key)
+    var deletenotes = async (key) => {
+        // console.log('key we recieved: ', key);
+        const newData = { ...notes };
+        delete newData[key];
+        await asyncstore.setItem('data', JSON.stringify(newData))
+        getData();
     }
 
 
