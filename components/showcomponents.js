@@ -5,7 +5,7 @@ import { globalstyle } from '../assets/styles/gloabalstyles';
 import { useTheme } from '@react-navigation/native'
 
 
-export default function ShowComponent({ notes, deletenotes, navigation, set_notes, setData, analyzeData }) {
+export default function ShowComponent({ notes, deletenotes, navigation, set_notes, updateNote }) {
     // console.log('this is ', a);
     // var [iter, set_iter] = React.useState(0)
     // var list1 = [];
@@ -16,8 +16,8 @@ export default function ShowComponent({ notes, deletenotes, navigation, set_note
     var theme = useTheme()
 
 
-    const navigatetoOther = (e, f) => {
-        navigation.navigate('Details', { a: e, b: set_notes, c: f, d: setData, e: analyzeData })
+    const navigatetoOther = (textData, key) => {
+        navigation.navigate('Details', { data: textData, key, updateNote: updateNote })
         // routerNav('false')
     }
 

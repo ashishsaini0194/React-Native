@@ -4,11 +4,11 @@ import { useTheme } from '@react-navigation/native'
 // import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-export default function Header2({ navigation, analyzeData }) {
+export default function Header2({ navigation, saveUpdatedData }) {
     var theme = useTheme().colors;
     return (
         <View style={{ ...style.head1, backgroundColor: theme.headercolor }} >
-            <Icon onPress={() => { navigation.navigate('Homefirst'), analyzeData() }} name="arrowleft" size={25} style={{ ...style.icon, color: theme.text }} />
+            <Icon onPress={() => { navigation.navigate('Homefirst'), saveUpdatedData() }} name="arrowleft" size={25} style={{ ...style.icon, color: theme.text }} />
             <Text style={{ ...style.text1, color: theme.text }}>Details</Text>
         </View>
     )

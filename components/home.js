@@ -15,7 +15,7 @@ export default function Home(props) {
     const { user } = useAuth0();
     var [notes, set_notes] = React.useState({})
 
-    asyncstore.clear()
+    // asyncstore.clear()
 
     var getData = async () => {
         const allNotes = await asyncstore.getItem('data');
@@ -43,60 +43,21 @@ export default function Home(props) {
     }
 
 
-    var updatenotes = (textdata) => {
-        // // alert(textdata)
-        // if (textdata.length > 0) {
-        //     // set_notes((prevnotes) => {
-        //     // const uniqueKey = Math.random().toString();
+    var updateNote = async (key, textData) => {
+        if (!textData) {
+            Alert.alert("Oops", "notes can't be empty", [{ text: 'I understand.' }])
+            return;
+        }
 
-        //     var data = getData('end')
-        //     data.then((e) => {
-        //         if (e == null) {
-        //             setData([{ notes: textdata }])
-        //             set_notes([{ notes: textdata }])
-        //         } else {
-        //             // console.log('BF data is :', e);
-        //             e[e.length] = { notes: textdata, key: uniqueKey };
-        //             // console.log('AF data is :', e);
-        //             // e.push({ notes: textdata, key: uniqueKey })
-        //             setData(e)
-        //             set_notes(e)
-        //         }
-        //     })
+        // console.log('updating 2', key, textData)
+        const allNotes = { ...notes }
+        allNotes[key] = { textData, key };
+        await asyncstore.setItem('data', JSON.stringify(allNotes))
+        getData();
 
-        //     // if (prevnotes != null) {
-        //     //     console.log('prevnotes 1 :', prevnotes);
-        //     //     return [
-        //     //         { notes: textdata, key: uniqueKey },
-        //     //         ...prevnotes
-        //     //     ]
-        //     // } else {
-        //     //     console.log('prevnotes 2 :', prevnotes);
-        //     //     return [{ notes: textdata, key: uniqueKey }]
-        //     // }
-
-        //     // })
-        // } else {
-        //     Alert.alert("Oops", "notes can't be empty", [{ text: 'I understand.' }])
-        // }
     }
 
-    var analyzeData = () => {
-        // var data = getData('end');
-        // data.then((data1) => {
-        //     var realdata = data1.filter((e) => {
 
-        //         if (e.notes == " " || e.notes == "  " || e.notes == "   ") {
-        //             return false
-        //         } else {
-        //             return true
-        //         }
-        //     })
-        //     // console.log('real data is : ', realdata);
-        //     set_notes(realdata)
-        //     setData(realdata)
-        // })
-    }
     var deletenotes = async (key) => {
         // console.log('key we recieved: ', key);
         const newData = { ...notes };
@@ -118,7 +79,7 @@ export default function Home(props) {
                 {/* <Headcomp /> */}
                 <Makenotebut updatenotes={setData} />
 
-                <ShowComponent notes={notes ? Object.values(notes) : []} deletenotes={deletenotes} navigation={props.navigation} setData={setData} set_notes={set_notes} analyzeData={analyzeData} />
+                <ShowComponent notes={notes ? Object.values(notes) : []} deletenotes={deletenotes} navigation={props.navigation} updateNote={updateNote} set_notes={set_notes} />
                 {/* <StatusBar style='auto' /> */}
 
             </>
