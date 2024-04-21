@@ -39,23 +39,24 @@ export async function createItem(itemData) {
 }
 
 // Function to update an item using PUT method
-export async function updateItem(id, updatedItemData) {
+export async function updateItem(id, textData) {
     try {
         const response = await fetch(`http://10.0.2.2:3000/notes/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(updatedItemData),
+            body: JSON.stringify({ textData }),
         });
         if (!response.ok) {
             throw new Error('Failed to update item');
         }
+        // console.log({ response })
         const data = await response.json();
-        console.log('Item updated:', data);
+        // console.log('Item updated:', data);
         return data;
     } catch (error) {
-        console.error('Error updating item:', error);
+        // console.log('Error updating item:', error);
     }
 }
 
@@ -65,12 +66,13 @@ export async function deleteItem(id) {
         const response = await fetch(`http://10.0.2.2:3000/notes/${id}`, {
             method: 'DELETE',
         });
+        // console.log({ response })
         if (!response.ok) {
             throw new Error('Failed to delete item');
         }
-        console.log('Item deleted');
+        // console.log('Item deleted');
     } catch (error) {
-        console.error('Error deleting item:', error);
+        // console.error('Error deleting item:', error);
     }
 }
 
