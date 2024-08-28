@@ -1,4 +1,17 @@
 {
   "name": "NotesMaker_revamp",
-  "displayName": "NotesMaker_revamp"
+  "displayName": "NotesMaker_revamp",
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "59d5f119-181b-4bd9-af40-7b5cb06d39cd"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/59d5f119-181b-4bd9-af40-7b5cb06d39cd"
+    },
+    "android": {},
+    "ios": {}
+  }
 }
